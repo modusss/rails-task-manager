@@ -1,0 +1,9 @@
+<!-- link_to is a shortcut in ruby to make html code -->
+<h2><%= link_to "new task", new_task_path %></h2>
+<% @tasks.each do |task| %>
+  <% # we can see through "rails routes" command that 'task' prefix is related to task#show and we have '/:id' so we have to use 'task_path(id)'%>
+  <h2><%= link_to task.name, task_path(task) %>
+  <%= link_to "update", edit_task_path(task) %>
+<!--there is no link path to "delete" but we use a second parameter "method: :delete" to made this -->
+  <%= link_to "delete", task_path(task), method: :delete %></h2>
+<% end %>
